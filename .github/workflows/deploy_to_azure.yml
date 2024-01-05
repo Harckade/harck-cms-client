@@ -24,6 +24,7 @@ jobs:
           echo "GA_TRACKING_ID=${{secrets.GA_TRACKING_ID}}" >> $GITHUB_ENV
           echo "AZURE_STATIC_WEB_APPS_API_TOKEN=${{secrets.AZURE_STATIC_WEB_APPS_API_TOKEN}}" >> $GITHUB_ENV
           echo "YOUR_PRIVACY_EMAIL=${{secrets.YOUR_PRIVACY_EMAIL}}" >> $GITHUB_ENV
+          echo "ENVIRONMENT=${{secrets.ENVIRONMENT}}" >> $GITHUB_ENV
       - uses: actions/checkout@v4
         with:
           submodules: true
