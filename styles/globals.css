@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+html,
+body {
+ height: 100%;
+ position: relative;
+ font-family: Montserrat, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+ Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+#__next {
+ min-height: 100vh; /* will cover the 100% of viewport */
+ overflow: hidden;
+ display: block;
+ position: relative;
+ padding-bottom: 100px; /* height of your footer */
+}
+
+
+.footer { 
+  bottom: 0;
+  width: 100%;
+  min-height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #313131;
+}
+
+.icon-link {
+  color: #313131;
+  display: inline-flex;
+  font-size: 3rem;
+  text-decoration: none;
+  width: 6rem;
+  height: 6rem;
+  position: relative;
+  margin: auto;
+}
+
+.icon-link:hover {
+  color: rgb(104, 104, 104);
+}
+
+.icon-link i {
+  margin: auto;
+}
+
+
+/*--navbar--*/
+.transparent-btn{
+  color: white;
+  background-color:transparent;
+  box-shadow: none;
+  outline-color: transparent;
+}
+
+.transparent-btn:focus{
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.logo{
+  color: rgba(0,0,0,.5);
+  font-size: .99em;
+  margin-left: .2em;
+}
+
+.main-nav{
+  padding-bottom: 0%;
+ text-transform: uppercase;
+  text-align: center;
+}
+
+div.dropdown-menu.show {
+  background-color: #212529;
+  right: 0;
+    left: auto;
+}
+a.dropdown-item {
+  color: hsla(0,0%,100%,.55);
+}
+/*----------*/
+
+.text-margins{
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.logo-image{
+  width: 25px;
+  height: 25px;
+  margin-left: 15px;
+}
+
+.about-logo{
+  width: 350px;
+  height: 350px;
+}
