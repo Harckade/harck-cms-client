@@ -67,6 +67,7 @@ You need to configure the following secrets (make sure the secrets names are spe
 3. SERVER_ADDRESS (Your Harck CMS API instance address)
 4. YOUR_PRIVACY_EMAIL (Email that appears on the privacy page. WARNING: It is your responsability to update the privacy page according to your needs and your modifications)
 5. YOUR_WEBSITE_URL (The URL of your blog. It is required because some links are built using this variable)
+6. ENVIRONMENT (e.g.: DEV | PROD. If you put anything but PROD, robots.txt will disallow all agents)
 
 ### Custom domain
 Navigate to [Azure portal](https://portal.azure.com) and go to your Harck client's Static Web App.
