@@ -9,6 +9,22 @@ module.exports = {
     config.resolve.fallback = { fs: false, path: false };
     return config;
   },
+  async rewrites() {
+    if (process.env.ENVIRONMENT === 'PROD'){
+      return [
+        {
+          source: '/robots.txt',
+          destination: '/api/robots_prod'
+        }
+      ];
+    }
+    return [
+      {
+        source: '/robots.txt',
+        destination: '/api/robots_generic'
+      }
+    ];
+  },
   async headers() {
     return [
       {
