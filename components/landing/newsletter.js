@@ -53,12 +53,12 @@ export const Newsletter = ({ lang, websiteUrl, newsletterSubscribeUrl }) => {
     };
 
     const handleSubmit = (event) => {
+        event.preventDefault();
         const form = event.currentTarget;
         if (form.checkValidity() === false) {
-            event.preventDefault();
             event.stopPropagation();
         }
-        else if (form.checkValidity() === true && emailAddress !== '') {
+        else {
             sendContactForm(emailAddress, lang);
         }
 
@@ -68,7 +68,7 @@ export const Newsletter = ({ lang, websiteUrl, newsletterSubscribeUrl }) => {
     return (
         <>
             <h3 className="text-center">{Text.Description[lang]}</h3>
-            <Form noValidate validated={validated}>
+            <Form noValidate validated={validated} onSubmit={handleSubmit}>
                 <Row className="g-2 justify-content-md-center">
                     <Col md="3">
                         <InputGroup className="mb-3" >
@@ -89,7 +89,7 @@ export const Newsletter = ({ lang, websiteUrl, newsletterSubscribeUrl }) => {
                                 <Form.Check.Input id="consent" required={true} type="checkbox" />
                                 <Form.Check.Label>{` ${Text.Consent[lang]} `}<a href={`${websiteUrl}/${lang}/privacy`}>{Text.PrivacyPolicy[lang]}</a>.</Form.Check.Label>
                             </div>
-                            <Button variant={isSending ? "secondary" : "danger"} disabled={isSending} className={isSending ? 'progress-bar-striped progress-bar-animated' : ''} onClick={(e) => { handleSubmit(e); }}>{`${Text.Subscribe[lang]} `}</Button>
+                            <Button variant={isSending ? "secondary" : "danger"} disabled={isSending} className={isSending ? 'progress-bar-striped progress-bar-animated' : ''} type="submit">{`${Text.Subscribe[lang]} `}</Button>
                         </Form.Check>
                     </Col>
                 </Row>

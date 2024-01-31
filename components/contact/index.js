@@ -62,12 +62,12 @@ export const Contact = ({ lang, contactUrl, websiteUrl }) => {
     };
 
     const handleSubmit = (event) => {
+        event.preventDefault();
         const form = event.currentTarget;
         if (form.checkValidity() === false) {
-            event.preventDefault();
             event.stopPropagation();
         }
-        else if (form.checkValidity() === true && contactData.email !== '' && contactData.name !== '' && contactData.message !== '') {
+        else{
             sendContactForm(contactData);
         }
 
@@ -108,7 +108,7 @@ export const Contact = ({ lang, contactUrl, websiteUrl }) => {
                         <Col md={6} className='text-center'><h4>{Text.Description[lang]}</h4></Col>
                     </Row>
                     <br />
-                    <Form noValidate validated={validated}>
+                    <Form noValidate validated={validated} onSubmit={handleSubmit}>
                         <Row className="g-2 justify-content-md-center">
                             <Col md="4">
                                 <InputGroup className="mb-3" >
@@ -173,7 +173,7 @@ export const Contact = ({ lang, contactUrl, websiteUrl }) => {
                                         <Form.Check.Input id="consent" required={true} type="checkbox" />
                                         <Form.Check.Label>{` ${Text.Consent[lang]} `}<a href={`${websiteUrl}/${lang}/privacy`}>{Text.PrivacyPolicy[lang]}</a>.</Form.Check.Label>
                                     </div>
-                                    <Button variant={isSending ? "secondary" : "light"} disabled={isSending} className={isSending ? 'progress-bar-striped progress-bar-animated' : ''} onClick={(e) => { handleSubmit(e); }}>{`${Text.Send[lang]} `}<SiMinutemailer /></Button>
+                                    <Button variant={isSending ? "secondary" : "light"} disabled={isSending} className={isSending ? 'progress-bar-striped progress-bar-animated' : ''} type="submit">{`${Text.Send[lang]} `}<SiMinutemailer /></Button>
                                 </Form.Check>
                             </Col>
                         </Row>
