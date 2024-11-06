@@ -5,9 +5,19 @@ module.exports = {
     includePaths: [path.join(__dirname, 'styles')],
   },
   swcMinify: true,
+  reactStrictMode: true,
   webpack: (config) => {
     config.resolve.fallback = { fs: false, path: false };
     return config;
+  },
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/en',
+        permanent: true,
+      },
+    ]
   },
   async rewrites() {
     if (process.env.ENVIRONMENT === 'PROD'){
@@ -33,7 +43,8 @@ module.exports = {
         headers: [
           {
             key: 'Content-Security-Policy',
-            value: process.env.YOUR_WEBSITE_URL === 'http://localhost:3000' ? '': `default-src 'self' ${process.env.SERVER_ADDRESS};  style-src 'self' 'unsafe-inline'  ${process.env.SERVER_ADDRESS} fonts.googleapis.com www.youtube.com trends.google.com; script-src 'self' ${process.env.SERVER_ADDRESS} 'unsafe-inline' ssl.google-analytics.com www.googletagmanager.com www.google-analytics.com trends.google.com; img-src 'self' ${process.env.SERVER_ADDRESS} https://www.googletagmanager.com https://www.google-analytics.com www.google-analytics.com data:; connect-src 'self' ${process.env.SERVER_ADDRESS} https://www.google-analytics.com www.google-analytics.com; font-src fonts.gstatic.com; frame-src 'self' ${process.env.SERVER_ADDRESS} https://www.youtube.com/embed/ https://trends.google.com`,
+            //waiting for NextJs to fix this for SSG https://github.com/vercel/next.js/discussions/54907
+            value: process.env.YOUR_WEBSITE_URL === 'http://localhost:3000' ? '': `default-src 'self' ${process.env.SERVER_ADDRESS};  style-src 'self' 'unsafe-inline' ${process.env.SERVER_ADDRESS} fonts.googleapis.com https://www.youtube.com https://trends.google.com; script-src 'self' ${process.env.SERVER_ADDRESS} https://ssl.google-analytics.com https://*.googletagmanager.com https://trends.google.com 'unsafe-inline'; img-src 'self' ${process.env.SERVER_ADDRESS} https://*.google-analytics.com https://*.googletagmanager.com data:; connect-src 'self' ${process.env.SERVER_ADDRESS} https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; font-src fonts.gstatic.com; frame-src 'self' ${process.env.SERVER_ADDRESS} https://www.youtube.com/embed/ https://trends.google.com`,
           },
           {
             key: 'X-Frame-Options',

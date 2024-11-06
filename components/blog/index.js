@@ -53,19 +53,10 @@ export const Blog = ({lang, articles, totalPages, currentPage}) => {
                     pageRangeDisplayed={5}
                 
                     getPageUrl={(pg) => {
-                        if (router.pathname.startsWith(`/${lang}/blog/`)){
-                            return pg;
-                        }
-                        return `blog/${pg}`;
+                        return `/${lang}/blog/${pg}`;
                     }}
                     onChange={(pg) => {
-                        if (router.pathname.startsWith(`/${lang}/blog/`)){
-                            router.push(`${pg}`)
-                        }
-                        else{
-                            router.push(`blog/${pg}`)
-                        }
-                       
+                        router.push(`/${lang}/blog/${pg}`);
                     }}
                 />
                 : ''}

@@ -16,33 +16,7 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css?family=PT+Sans:300,400,700,800&display=optional"
             rel="stylesheet"
           />
-          <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}></script>
-          <script dangerouslySetInnerHTML={{
-            __html: `
-            function getCookie(cname) {
-              var name = cname + "=";
-              var decodedCookie = decodeURIComponent(document.cookie);
-              var ca = decodedCookie.split(';');
-              for(var i = 0; i < ca.length; i++) {
-                var c = ca[i];
-                while (c.charAt(0) == ' ') {
-                  c = c.substring(1);
-                }
-                if (c.indexOf(name) == 0) {
-                  return c.substring(name.length, c.length);
-                }
-              }
-              return "";
-            }
-            var consent = getCookie("CookieConsent");
-         
-            if(consent === "true"){
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${GA_TRACKING_ID}', {'anonymize_ip': true});
-            }`,
-          }} />
+          <meta name="ga-tracking-id" content={GA_TRACKING_ID} />
         </Head>
         <body>
           <Main />
